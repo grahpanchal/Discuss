@@ -27,7 +27,7 @@ export const fetchTopPosts = async () => {
       _count: { select: { comments: true } },
       user: { select: { name: true } },
     },
-    take: 5,
+    // take: 5,
   });
 };
 

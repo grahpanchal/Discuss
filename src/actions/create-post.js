@@ -69,5 +69,6 @@ export const createPost = async (slug, prevState = { message }, formData) => {
     }
   }
   revalidatePath(`/topics/${slug}`);
-  redirect(`/topics/${topic.slug}/posts/${post.id}`);
+  // redirect(`/topics/${topic.slug}/posts/${post.id}`);
+  redirect(`/topics/${slug}/posts/${post.id}`);
 };

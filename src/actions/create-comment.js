@@ -10,7 +10,7 @@ const createCommentSchema = z.object({
 
 export const createComment = async (
   { postId, parentId },
-  prevState = { message: "" },
+  prevState = { message },
   formData
 ) => {
   console.log("postId:", postId, "parentId:", parentId, "formData:", formData);
@@ -48,10 +48,8 @@ export const createComment = async (
     };
   }
 
-  let comment;
-
   try {
-    comment = await prisma.comment.create({
+    await prisma.comment.create({
       data: {
         content: result.data.content,
         postId: postId,
