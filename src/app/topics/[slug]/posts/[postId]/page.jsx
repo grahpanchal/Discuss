@@ -17,6 +17,7 @@ const PostShowPage = async ({ params }) => {
           Back To {slug}
         </Button>
       </Link>
+      <h1 className="font-bold text-2xl">Posts</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <PostShow postId={postId} />
       </Suspense>

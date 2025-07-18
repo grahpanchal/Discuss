@@ -11,8 +11,8 @@ const PostShow = async ({ postId }) => {
   if (!post) return notFound();
   return (
     <div className="mt-4">
-      <h1 className="text-2xl font-bold my-2">{post.title}</h1>
-      <p className="border rounded p-3">{post.content}</p>
+      <h1 className="text-xl font-bold my-2">{post.title}</h1>
+      <p className="border rounded p-2">{post.content}</p>
     </div>
   );
 };
