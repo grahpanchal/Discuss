@@ -10,6 +10,10 @@ export default async function Home() {
         <h1 className="text-xl font-bold m-2">Top Posts</h1>
         <PostList posts={posts} />
       </div>
+      {/*  add this later
+      <div>
+        <TopicList />
+      </div> */}
       <div>
         <TopicCreateForm />
       </div>
