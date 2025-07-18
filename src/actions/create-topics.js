@@ -4,7 +4,13 @@ import { prisma } from "@/lib";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "") // remove special characters
+    .replace(/\s+/g, "-"); // replace spaces with hyphen
+}
 const createTopicSchema = z.object({
   name: z
     .string()
@@ -39,10 +45,11 @@ export const createTopics = async (prevState = { message }, formData) => {
   }
 
   let topic;
+
   try {
     topic = await prisma.topic.create({
       data: {
-        slug: result.data.name,
+        slug: generateSlug(result.data.name),
         description: result.data.description,
       },
     });
