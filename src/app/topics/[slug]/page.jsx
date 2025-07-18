@@ -8,14 +8,12 @@ const TopicShowPage = async ({ params }) => {
   console.log(slug);
   console.log("TopicShowPage - Slug:", slug); // Debug log
   console.log("TopicShowPage - Params:", params);
+  const posts = await fetchPostByTopicSlug(params.slug);
   return (
     <div className="grid grid-cols-4 gap-4 p-4">
       <div className="col-span-3">
-        <h1 className="text-2xl font-bold m-2">{slug}</h1>
-        <PostList
-          fetchData={() => fetchPostByTopicSlug(slug)}
-          params={{ slug }}
-        />
+        <h1 className="text-xl font-bold m-2">Topic: {params.slug}</h1>
+        <PostList posts={posts} /> {/* ✅ pass only data, not function */}
       </div>
       <div>
         <PostCreateForm slug={slug} />
