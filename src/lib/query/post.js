@@ -43,3 +43,20 @@ export const fetchPostBySearch = async (term) => {
     },
   });
 };
+export async function fetchPostsBySearchTerm(term) {
+  if (!term) return [];
+  return await prisma.post.findMany({
+    where: {
+      OR: [
+        { title: { contains: term, mode: "insensitive" } },
+        { content: { contains: term, mode: "insensitive" } },
+      ],
+    },
+    include: {
+      user: true,
+      topic: true,
+      _count: { select: { comments: true } },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+}
