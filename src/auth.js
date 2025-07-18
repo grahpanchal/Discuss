@@ -28,5 +28,9 @@ export const {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Ensure redirects use the correct base URL (NEXTAUTH_URL)
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
   },
 });
